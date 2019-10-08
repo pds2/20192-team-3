@@ -70,7 +70,7 @@ Votar Doze |
 Jogar Carta |
 Cortar Baralho |
 
-## Classe Jogador
+## Classe Dupla
 
 Responsabilidades | Colaboradores
 --------- | --------------
