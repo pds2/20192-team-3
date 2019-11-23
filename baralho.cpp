@@ -36,7 +36,7 @@ Baralho::~Baralhok(){
     for(int i=0; i<tamanho; i++){
         delete this->baralho[i];
     }
-    this->baralho.limpar();
+    this->baralho.clean();
 }
 
 int aleatorio(int i){
@@ -44,7 +44,7 @@ int aleatorio(int i){
 }
 
 void Baralho::embaralhar(){
-    std::embaralhamento(baralho.inicio(), baralho.final(), aleatorio);
+    std::embaralhamento(baralho.begin(), baralho.end(), aleatorio);
 }
 
 void mostrar_carta_baralho(Carta *carta){
@@ -53,7 +53,7 @@ void mostrar_carta_baralho(Carta *carta){
 
 void Baralho::mostrar_baralho(){
     std::vector<Carta*>::iterator it;
-    for(it = baralho.inicio(); it != baralho.final(); ++it){
+    for(it = baralho.begin(); it != baralho.end(); ++it){
         mostrar_carta_baralho(*it);
     }
 }
@@ -61,8 +61,8 @@ void Baralho::mostrar_baralho(){
 Carta* Baralho::pegar_carta(){
     Carta* carta = this->baralho[0]; //pega primeira do baralho
     std::vector<Carta*>::iterator it;
-    it = this->baralho.inicio();
-    this->baralho.apagar(it); //tira primeira do baralho
+    it = this->baralho.begin();
+    this->baralho.erase(it); //tira primeira do baralho
     return carta; // retorna a primeira carta
 }
 
