@@ -8,7 +8,7 @@ Mao::Mao(Baralho* baralho){
 }
 
 Mao::~Mao(){
-    this->mao.limpar();
+    this->mao.clean();
 }
 
 void mostrar_mao(Carta *carta){
@@ -33,7 +33,7 @@ Carta* Mao::descartar(int carta_pos){
     std::vector<Carta*>::iterator it;
     it = this->mao.begin() + carta_pos;
 
-    this->mao.limpar(it);
+    this->mao.erase(it);
     return carta;
 }
 
@@ -42,7 +42,7 @@ void Mao::descartar_mao(Mesa *mesa){
     for(it = this->mao.begin(); it != this->mao.end(); ++it){
         mesa->por_na_mesa(*it);
     }
-    this->hand.limpar();
+    this->hand.clean();
 }
 
 int Mao::tamanho_mao(){
