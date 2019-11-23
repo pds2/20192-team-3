@@ -2,6 +2,7 @@
 #define "BARALHO.H"
 
 #include "carta.h"
+#include "usualcarta.h"
 
 class Baralho {
     private:
