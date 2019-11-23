@@ -1,5 +1,5 @@
-#ifndef "HAND.H"
-#define "HAND.H"
+#ifndef _MAO_H
+#define _MAO_H
 
 #include <vector>
 #include "carta.h"
