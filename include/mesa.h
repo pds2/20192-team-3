@@ -1,5 +1,5 @@
-#ifndef "TABLE.H"
-#define "TABLE.H"
+#ifndef _MESA_H
+#define _MESA_H
 
 #include "carta.h"
 #include "mao.h"
@@ -7,7 +7,7 @@
 
 class Mesa {
     private:
-        std::vector<Carta*> mesa;
+        std:: vector<Carta*> mesa;
     public:
         Mesa();
         ~Mesa();

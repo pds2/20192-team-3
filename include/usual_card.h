@@ -1,7 +1,7 @@
-#ifndef "USUAL_CARD.H"
-#define "USUAL_CARD.H"
+#ifndef _USUAL_CARD_H
+#define _USUAL_CARD_H
 
-#include "card.h"
+#include "carta.h"
 
 enum Naipes {
     Paus = 1,

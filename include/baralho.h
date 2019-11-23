@@ -1,8 +1,8 @@
-#ifndef "BARALHO.H"
-#define "BARALHO.H"
+#ifndef _BARALHO_H
+#define _BARALHO_H
 
 #include "carta.h"
-#include "usualcarta.h"
+#include "usual_card.h"
 
 class Baralho {
     private:

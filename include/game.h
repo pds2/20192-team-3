@@ -1,8 +1,8 @@
-#ifndef "GAME.H"
-#define "GAME.H"
+#ifndef _GAME_H
+#define _GAME_H
 
 #include <iostream>
-#include "game_logic.h"
+#include "logica.h"
 
 class Game {
     private:

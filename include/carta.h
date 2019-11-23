@@ -1,5 +1,5 @@
-#ifndef "CARTA_H"
-#define "CARTA_H"
+#ifndef _CARTA_H
+#define _CARTA_H
 
 #include <iostream>
 #include <string>

@@ -31,7 +31,7 @@ Baralho:Baralho(){
     }
 }
 
-Baralho::~Baralhok(){
+Baralho::~Baralho(){
     int tamanho = this->baralho.tamanho();
     for(int i=0; i<tamanho; i++){
         delete this->baralho[i];
