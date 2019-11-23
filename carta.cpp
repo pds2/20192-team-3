@@ -38,16 +38,16 @@ Carta::Carta(int valor){
             this->_valor = Tres;
             break;
         case 11:
-            this->_valor = Sete de Ouros;
+            this->_valor = SeteDeOuros;
             break;
         case 12:
-            this->_valor = As de Espadas;
+            this->_valor = AsDeEspadas;
             break;
         case 13:
-            this->_valor = Sete de Copas;
+            this->_valor = SeteDeCopas;
             break;
         case 14:
-            this->_valor = Quatro de Paus;
+            this->_valor = QuatroDePaus;
             break;
     }
 }
