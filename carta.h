@@ -15,10 +15,10 @@ enum Valor{
 	As,
 	Dois,
 	Tres,
-	Sete de Ouros,
-	As de Espadas,
-	Sete de Copas,
-	Quatro de Paus
+	SeteDeOuros,
+	AsDeEspadas,
+	SeteDeCopas,
+	QuatroDePaus
 };
 
 class Carta{
