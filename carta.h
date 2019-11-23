@@ -23,17 +23,8 @@ enum Valor{
 
 class Carta{
 	private:
-		std::string cardnaipe;
-		std::string cardface;
 		Valor _valor;
-		bool mao; 
-	public:		
-		Carta(std::string naipe, std::string face, int value){
-			cardnaipe = naipe;
-			cardface = face;
-			mao = true;
-		}
-		
+	public:			
 		Carta(Valor valor); //Construtor
         	Carta(int valor); //Construtor
         	virtual ~Carta(); //Destrutor
