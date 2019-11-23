@@ -4,24 +4,41 @@
 #include <iostream>
 #include <string>
 
+enum Valor{
+	Quatro = 1,
+	Cinco,
+	Seis,
+	Sete,
+	Dama,
+	Valete,
+	Rei,
+	As,
+	Dois,
+	Tres,
+	Sete de Ouros,
+	As de Espadas,
+	Sete de Copas,
+	Quatro de Paus
+};
+
 class Carta{
 	private:
 		std::string cardnaipe;
 		std::string cardface;
-		int cardvalue;
+		Valor _valor;
 		bool mao; 
 	public:		
 		Carta(std::string naipe, std::string face, int value){
 			cardnaipe = naipe;
 			cardface = face;
-			cardvalue = value;
 			mao = true;
 		}
 		
-		std::string Show_Carta(){
-			return (cardface+ "de" + cardnaipe);
-		}
-		
+		Carta(Valor valor); //Construtor
+        	Carta(int valor); //Construtor
+        	virtual ~Carta(); //Destrutor
+        	virtual Valor get_valor() const;
+        	virtual void print_carta() = 0; 		
 };
 
 #endif
