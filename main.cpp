@@ -28,7 +28,7 @@ int main(){
     while(game_loop == true){
 
         //pontos da partida inicial.
-        game.setPoints(2);
+        game.setPontos(2);
 
         baralho.embaralhar();
 
