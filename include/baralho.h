@@ -3,6 +3,7 @@
 
 #include "carta.h"
 #include "usual_card.h"
+#include <vector>
 
 class Baralho {
     private:

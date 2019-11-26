@@ -26,7 +26,7 @@ Baralho::Baralho(){
                 continue;
     
             UsualCard* carta = new UsualCard(j, i);
-            baralho.push_back(carta);
+            Baralho.push_back(carta);
         }
     }
 }
@@ -53,14 +53,14 @@ void mostrar_carta_Baralho(Carta *carta){
 
 void Baralho::mostrar_Baralho(){
     std::vector<Carta*>::iterator it;
-    for(it = Baralho.begin(); it != Baralho.end(); ++it){
+    for(it = Baralho.begin(); it != Baralho.end(); it++){
         mostrar_carta_Baralho(*it);
     }
 }
 
 Carta* Baralho::pegar_carta(){
     Carta* carta = this->Baralho[0]; //pega primeira do baralho
-    std::vector<Carta*>::iterator it;
+    vector<Carta*>::iterator it;
     it = this->Baralho.begin();
     this->Baralho.erase(it); //tira primeira do baralho
     return carta; // retorna a primeira carta
