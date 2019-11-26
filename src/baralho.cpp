@@ -1,6 +1,6 @@
 #include "baralho.h"
 
-Baralho:Baralho(){
+Baralho::Baralho(){
 
     UsualCard* quatro_paus = new UsualCard(QuatroDePaus, Paus); //criar zap
     Baralho.push_back(quatro_paus);
