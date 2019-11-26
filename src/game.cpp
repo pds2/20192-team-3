@@ -53,7 +53,7 @@ void Game::aumentarPontos(){
 
 void Game::printMaoVencedora(Logica logica){
 
-    if(logica.getDuplaVenc() == 1){
+    if(logica.getTimeVenc() == 1){
         setPontuacao_1(2);
         std::cout << "PARABENS, SEU TIME PONTUOU NESSA MAO!" << std::endl;
         std::cout << std::endl;
@@ -80,10 +80,10 @@ void Game::printQuedaVencedor(){
         std::cout << "PARABENS, SEU TIME GANHOU ESSA QUEDA!" << std::endl;
         std::cout << std::endl;
         std::cout << "O PLACAR ATUAL DE QUEDAS E: Time1 - "<< getPontuacao_Final_1() << " X "
-                    << getPontuacao_Final_2) << " - Time2" << std::endl;
+                    << getPontuacao_Final_2() << " - Time2" << std::endl;
         std::cout << std::endl;
 
-    }else if(getPontuacao_2) >= 12){
+    }else if(getPontuacao_2() >= 12){
         
         setPontuacao_Final_2();
         reset_pontuacao();
@@ -108,19 +108,19 @@ void Game::setPontos(int pontos){
 }
 
 int Game::getPontuacao_1() {
-    return this->Pontuacao_1;
+    return this->pontuacao_1;
 }
 
 void Game::setPontuacao_1(int pontos) {
-    this->Pontuacao_1 += pontos;
+    this->pontuacao_1 += pontos;
 }
 
 int Game::getPontuacao_2(){
-    return this->Pontuacao_2;
+    return this->pontuacao_2;
 }
 
 void Game::setPontuacao_2(int pontos){
-    this->Pontuacao_2+= pontos;
+    this->pontuacao_2+= pontos;
 }
 
 int Game::getPontuacao_Final_1() {

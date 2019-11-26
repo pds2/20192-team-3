@@ -9,10 +9,10 @@ class Baralho {
     private:
         std::vector<Carta*> baralho;
     public:
-        baralho(); //Construtor
-        ~baralho(); //Destrutor
+        Baralho(); //Construtor
+        ~Baralho(); //Destrutor
         void embaralhar(); 
-        void mostrar_baralho(); //cartas do baralho todo
+        void mostrar_Baralho(); //cartas do baralho todo
         Carta* pegar_carta(); //pega uma carta do topo 
         void inserir_carta(Carta* carta); //por carta no baralho 
 };

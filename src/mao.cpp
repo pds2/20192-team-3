@@ -3,16 +3,19 @@
 
 Mao::Mao(Baralho* baralho){
     for(int i=0; i<TAMANHO_MAO; i++){
-        this->mao.push_back(baralho->mostrar_carta());
+        this->mao.push_back(baralho->pegar_carta());
     }
 }
 
 Mao::~Mao(){
-    this->mao.clean();
+    int tamanho = this->mao.size();
+    for(int i=0; i<tamanho; i++){
+        delete this->mao[i];
+        }
 }
 
 void mostrar_mao(Carta *carta){
-    carta->mostrar_carta();
+    carta->print_carta();
 }
 
 void Mao::mostrar_mao(){
@@ -21,7 +24,7 @@ void Mao::mostrar_mao(){
     for(it = this->mao.begin(); it != this->mao.end(); ++it){
         std::cout << "Carta " << carta_contador << " -> ";
         carta_contador++;
-        mostrar_mao(*it);
+        //mostrar_mao(*it);
     }
 }
 
@@ -42,7 +45,6 @@ void Mao::descartar_mao(Mesa *mesa){
     for(it = this->mao.begin(); it != this->mao.end(); ++it){
         mesa->por_na_mesa(*it);
     }
-    this->hand.clean();
 }
 
 int Mao::tamanho_mao(){

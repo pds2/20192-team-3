@@ -7,7 +7,7 @@
 
 class Mesa {
     private:
-        std:: vector<Carta*> mesa;
+        std::vector<Carta*> mesa;
     public:
         Mesa();
         ~Mesa();

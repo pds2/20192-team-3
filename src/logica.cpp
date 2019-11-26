@@ -1,4 +1,5 @@
 #include "logica.h"
+#include "excessao.h"
 
 Logica::Logica(){
     this->cartaEscolhida = 0;
@@ -18,7 +19,7 @@ void Logica::limparMao(){//limpa a logica entre cada mão
     this->placar[1] = 0;
 }
 
-int GameLogic::testeMaoVenc(){//testa quem venceu a mão atual
+int Logica::testeMaoVenc(){//testa quem venceu a mão atual
 
     //CASOS NORMAIS DE VITORIA DO JOGADOR
     if( (this->placar[0] == 2 && this->placar[1] < 2 ) || 
@@ -26,7 +27,7 @@ int GameLogic::testeMaoVenc(){//testa quem venceu a mão atual
         return this->timeVenc = 1;
     }
     //CASOS DE VITORIA DO OPONENTE
-    else if( (this->pplacar[1] == 2 && this->placar[0] < 2 ) || 
+    else if( (this->placar[1] == 2 && this->placar[0] < 2 ) || 
              (this->placar[1] == 3 && this->placar[0] < 3) ){
         return this->timeVenc = 2;
     }
@@ -56,7 +57,7 @@ int GameLogic::testeMaoVenc(){//testa quem venceu a mão atual
     }
 }
 
-void GameLogic:: checkSeuVenc(Carta *selecionadaCarta){//checa se seu time venceu a rodada atual da mão
+void Logica::checkSeuVenc(Carta *selecionadaCarta){//checa se seu time venceu a rodada atual da mão
 
     //caso voce esteja fazendo
     if(selecionadaCarta->get_valor() > this->maiorCarta){
@@ -73,7 +74,7 @@ void GameLogic:: checkSeuVenc(Carta *selecionadaCarta){//checa se seu time vence
     }
 }
 
-void GameLogic::checkOponenteVenc(Carta *selecionadaCarta){//checa se o time adversario venceu a rodada atual da mão
+void Logica::checkOponenteVenc(Carta *selecionadaCarta){//checa se o time adversario venceu a rodada atual da mão
 
     //caso seu inimigo esteja fazendo
     if(selecionadaCarta->get_valor() > this->maiorCarta){
@@ -90,7 +91,7 @@ void GameLogic::checkOponenteVenc(Carta *selecionadaCarta){//checa se o time adv
     }
 }
 
-int GameLogic::testeRodada(int i){//checa vitoria por rodada
+int Logica::testeRodada(int i){//checa vitoria por rodada
 
     if(this->timeVenc == 0){
         std::cout << "CANGOU!" << std::endl;
@@ -158,52 +159,52 @@ void Logica::controleRodada(Baralho* baralho, Mao maoJogador, Mao ia1Mao, Mao ia
                     if(this->cartaEscolhida != 1 &&
                         this->cartaEscolhida != 2 &&
                         this->cartaEscolhida != 3 ){
-                        throw Exception();
+                        throw Excessao();
                     }
                 }   
-                catch(Exception &e){
+                catch(Excessao &e){
                     std::cerr << e.what() << std::endl;
                 }
                 
-                cartaEscolhida = maoJogador.descartar(this->cartaEscolhida);
+                selecionadaCarta = maoJogador.descartar(this->cartaEscolhida);
                 std::cout << "Voce jogou a carta: ";
-                cartaEscolhida->print_carta();
+                selecionadaCarta->print_carta();
                 
-                checkSeuVenc(cartaEscolhida);
-                mesa.por_na_mesa(cartaEscolhida);
+                checkSeuVenc(selecionadaCarta);
+                mesa.por_na_mesa(selecionadaCarta);
             }
 
             //vez INIMIGO 1
             else if(j==1){
                 this->cartaEscolhida = (std::rand()%(3-i)) + 1;
-                cartaEscolhida = ia1Hand.discard(this->cartaEscolhida);
+                selecionadaCarta = ia1Mao.descartar(this->cartaEscolhida);
                 std::cout << "Oponente 1 jogou a carta: ";
-                cartaEscolhida->print_card();
+                selecionadaCarta->print_carta();
                 
-                checkOponenteVenc(cartaEscolhida);
-                table.throw_on_table(cartaEscolhida);
+                checkOponenteVenc(selecionadaCarta);
+                mesa.por_na_mesa(selecionadaCarta);
             }
 
             //vez Parceiro
             else if(j==2){
                 this->cartaEscolhida = (std::rand()%(3-i)) + 1;
-                cartaEscolhida = ia2Hand.discard(this->cartaEscolhida);
+                selecionadaCarta = ia2Mao.descartar(this->cartaEscolhida);
                 std::cout << "Seu Parceiro jogou a carta: ";
-                cartaEscolhida->print_card();
+                selecionadaCarta->print_carta();
 
-                checkSeuVenc(cartaEscolhida);
-                mesa.por_na_mesa(cartaEscolhida);
+                checkSeuVenc(selecionadaCarta);
+                mesa.por_na_mesa(selecionadaCarta);
             }
 
             //vez INIMIGO 2
             else if(j==3){
                 this->cartaEscolhida = (std::rand()%(3-i)) + 1;
-                cartaEscolhida = ia3Mao.descartar(this->cartaEscolhida);
+                selecionadaCarta = ia3Mao.descartar(this->cartaEscolhida);
                 std::cout << "Oponente 2 jogou a carta: ";
-                cartaEscolhida->print_carta();
+                selecionadaCarta->print_carta();
 
-                checkOponenteVenc(cartaEscolhida);
-                mesa.por_na_mesa(cartaEscolhida);
+                checkOponenteVenc(selecionadaCarta);
+                mesa.por_na_mesa(selecionadaCarta);
             }
         }
 
@@ -219,7 +220,7 @@ void Logica::controleRodada(Baralho* baralho, Mao maoJogador, Mao ia1Mao, Mao ia
     //descartar as cartas restantes
     maoJogador.descartar_mao(&mesa);
     ia1Mao.descartar_mao(&mesa);
-    ia2Mao.descartar_mao(&messa);
+    ia2Mao.descartar_mao(&mesa);
     ia3Mao.descartar_mao(&mesa);
 
     mesa.recolocar_cartas(baralho); //por elas no final 
