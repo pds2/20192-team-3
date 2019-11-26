@@ -18,7 +18,7 @@ Carta
 Excessao
 Game
 Logica
-Mao
+Maos
 Mesa
 UsualCard
 
