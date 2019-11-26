@@ -44,7 +44,7 @@ int aleatorio(int i){
 }
 
 void Baralho::embaralhar(){
-    embaralhamento(Baralho.begin(), Baralho.end(), aleatorio);
+    embaralhar(Baralho.begin(), Baralho.end(), aleatorio);
 }
 
 void mostrar_carta_Baralho(Carta *carta){
