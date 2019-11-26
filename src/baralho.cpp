@@ -32,7 +32,7 @@ Baralho::Baralho(){
 }
 
 Baralho::~Baralho(){
-    int tamanho = this->Baralho.tamanho();
+    int tamanho = this->Baralho.size();
     for(int i=0; i<tamanho; i++){
         delete this->Baralho[i];
     }
@@ -51,18 +51,18 @@ void mostrar_carta_Baralho(Carta *carta){
     carta->print_carta();
 }
 
-void Baralho::mostrar_Baralho(){
-    std::vector<Carta*>::iterator it;
+void Baralho::mostrar_Baralho() {
+    std::vector<Carta*>std::iterator it;
     for(it = Baralho.begin(); it != Baralho.end(); it++){
         mostrar_carta_Baralho(*it);
     }
 }
 
 Carta* Baralho::pegar_carta(){
-    Carta* carta = this->Baralho[0]; //pega primeira do baralho
-    vector<Carta*>::iterator it;
-    it = this->Baralho.begin();
-    this->Baralho.erase(it); //tira primeira do baralho
+    Carta* carta = this-> Baralho[0]; //pega primeira do baralho
+    std::vector<Carta*>std::iterator it;
+    it = this-> Baralho.begin();
+    this-> Baralho.erase(it); //tira primeira do baralho
     return carta; // retorna a primeira carta
 }
 

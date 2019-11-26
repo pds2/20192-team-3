@@ -7,7 +7,7 @@ enum Naipes {
     Paus = 1,
     Copas,
     Espadas,
-    Ouro
+    Ouros
 };
 
 class UsualCard : public Carta {
