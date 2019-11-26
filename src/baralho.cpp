@@ -1,18 +1,18 @@
 #include "baralho.h"
 
-Baralho::Baralho(){
+Baralho::baralho(){
 
     UsualCard* quatro_paus = new UsualCard(QuatroDePaus, Paus); //criar zap
-    Baralho.push_back(quatro_paus);
+    baralho.push_back(quatro_paus);
 
     UsualCard* sete_copas = new UsualCard(SeteDeCopas, Copas); //criar sete de copas
-    Baralho.push_back(sete_copas);
+    baralho.push_back(sete_copas);
 
     UsualCard* as_espadas = new UsualCard(AsDeEspadas, Espadas); //criar espadilha
-    Baralho.push_back(as_espadas);
+    baralho.push_back(as_espadas);
 
     UsualCard* sete_ouros = new UsualCard(SeteDeOuros, Ouros); //criar sete de ouros
-    Baralho.push_back(sete_ouros);
+    baralho.push_back(sete_ouros);
 
     for(int i=Paus; i<=Ouros; i++){
         for(int j=Quatro; j<=Tres; j++){
@@ -26,17 +26,17 @@ Baralho::Baralho(){
                 continue;
     
             UsualCard* carta = new UsualCard(j, i);
-            Baralho.push_back(carta);
+            baralho.push_back(carta);
         }
     }
 }
 
-Baralho::~Baralho(){
-    int tamanho = this->Baralho.size();
+Baralho::~baralho(){
+    int tamanho = this->baralho.size();
     for(int i=0; i<tamanho; i++){
-        delete this->Baralho[i];
+        delete this->baralho[i];
     }
-    this->Baralho.clean();
+    this->baralho.clean();
 }
 
 int aleatorio(int i){
@@ -44,14 +44,14 @@ int aleatorio(int i){
 }
 
 void Baralho::embaralhar(){
-    embaralhar(Baralho.begin(), Baralho.end(), aleatorio);
+    embaralhar(baralho.begin(), baralho.end(), aleatorio);
 }
 
-void mostrar_carta_Baralho(Carta *carta){
+void mostrar_carta_baralho(Carta *carta){
     carta->print_carta();
 }
 
-void Baralho::mostrar_Baralho() {
+void Baralho::mostrar_baralho() {
     std::vector<Carta*>std::iterator it;
     for(it = Baralho.begin(); it != Baralho.end(); it++){
         mostrar_carta_Baralho(*it);
@@ -59,13 +59,13 @@ void Baralho::mostrar_Baralho() {
 }
 
 Carta* Baralho::pegar_carta(){
-    Carta* carta = this-> Baralho[0]; //pega primeira do baralho
+    Carta* carta = this-> baralho[0]; //pega primeira do baralho
     std::vector<Carta*>std::iterator it;
-    it = this-> Baralho.begin();
-    this-> Baralho.erase(it); //tira primeira do baralho
+    it = this-> baralho.begin();
+    this-> baralho.erase(it); //tira primeira do baralho
     return carta; // retorna a primeira carta
 }
 
 void Baralho::inserir_carta(Carta* carta){
-    this->Baralho.push_back(carta);
+    this->baralho.push_back(carta);
 }
