@@ -1,6 +1,8 @@
 #include "mesa.h"
 
-Mesa::Mesa(){}
+Mesa::Mesa(){
+    
+}
 
 Mesa::~Mesa(){
     this->mesa.clear();

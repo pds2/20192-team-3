@@ -32,7 +32,7 @@ void UsualCard::print_carta(){
     std::string naipe_string;
     std::string valor_string;
 
-    switch (suit)
+    switch (naipe)
     {
         case 1:
             naipe_string = "Paus";

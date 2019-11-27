@@ -1,11 +1,12 @@
 #ifndef _MESA_H
 #define _MESA_H
 
+#include <vector>
 #include "carta.h"
 #include "mao.h"
 #include "baralho.h"
 
-class Mesa {
+class Mesa{
     private:
         std::vector<Carta*> mesa;
     public:

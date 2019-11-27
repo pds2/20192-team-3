@@ -217,12 +217,12 @@ void Logica::controleRodada(Baralho* baralho, Mao maoJogador, Mao ia1Mao, Mao ia
         }
     }
     
-    //descartar as cartas restantes
+    /*/descartar as cartas restantes
     maoJogador.descartar_mao(&mesa);
     ia1Mao.descartar_mao(&mesa);
     ia2Mao.descartar_mao(&mesa);
     ia3Mao.descartar_mao(&mesa);
-
+*/
     mesa.recolocar_cartas(baralho); //por elas no final 
 }
 

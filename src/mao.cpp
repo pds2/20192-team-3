@@ -39,14 +39,14 @@ Carta* Mao::descartar(int carta_pos){
     this->mao.erase(it);
     return carta;
 }
-
+/*
 void Mao::descartar_mao(Mesa *mesa){
     std::vector<Carta*>::iterator it;
     for(it = this->mao.begin(); it != this->mao.end(); ++it){
         mesa->por_na_mesa(*it);
     }
 }
-
+*/
 int Mao::tamanho_mao(){
     return this->mao.size();
 }
