@@ -1,10 +1,10 @@
 #include "mesa.h"
 
-Mesa::Mesa(){
+Mesa::mesa(){
     
 }
 
-Mesa::~Mesa(){
+Mesa::~mesa(){
     int tamanho = this->mesa.size();
     for(int i=0; i<tamanho; i++){
         delete this->mesa[i];
