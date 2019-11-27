@@ -1,4 +1,5 @@
 #include "baralho.h"
+#include <cstdlib>
 
 Baralho::Baralho(){
 
@@ -42,7 +43,7 @@ int aleatorio(int i){
     return std::rand()%i;
 }
 
-void Baralho::embaralhar(baralho)
+void Baralho::embaralhar(baralho){
     std::random_shuffle(baralho.begin(), baralho.end(), aleatorio)
 }
 

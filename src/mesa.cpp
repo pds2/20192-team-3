@@ -10,7 +10,6 @@ Mesa::~Mesa(){
         delete this->mesa[i];
     }
 }
-}
 
 //devolve as cartas para o baralho
 void Mesa::recolocar_cartas(Baralho* baralho){
