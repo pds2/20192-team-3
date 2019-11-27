@@ -36,15 +36,14 @@ Baralho::~Baralho(){
     for(int i=0; i<tamanho; i++){
         delete this->baralho[i];
     }
-    //this->baralho.clean();
 }
 
 int aleatorio(int i){
     return std::rand()%i;
 }
 
-void Baralho::embaralhar(){
-//    embaralhar(this->baralho.begin(), this->baralho.end(), aleatorio);
+void Baralho::embaralhar(baralho)
+    std::random_shuffle(baralho.begin(), baralho.end(), aleatorio)
 }
 
 void mostrar_carta_Baralho(Carta *carta){

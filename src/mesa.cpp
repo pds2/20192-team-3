@@ -5,7 +5,11 @@ Mesa::Mesa(){
 }
 
 Mesa::~Mesa(){
-    this->mesa.clear();
+    int tamanho = this->mesa.size();
+    for(int i=0; i<tamanho; i++){
+        delete this->mesa[i];
+    }
+}
 }
 
 //devolve as cartas para o baralho
@@ -14,7 +18,6 @@ void Mesa::recolocar_cartas(Baralho* baralho){
     for(it = this->mesa.begin(); it != this->mesa.end(); ++it){
         baralho->inserir_carta(*it);
     }
-    // this->baralho.clear();
 }
 
 //coloca uma carta na mesa
