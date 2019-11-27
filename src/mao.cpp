@@ -23,8 +23,9 @@ void Mao::mostrar_mao(){
     std::vector<Carta*>::iterator it;
     for(it = this->mao.begin(); it != this->mao.end(); ++it){
         std::cout << "Carta " << carta_contador << " -> ";
+        Carta *x = this->mao[carta_contador-1];
         carta_contador++;
-        //mostrar_mao(*it);
+        x->print_carta();
     }
 }
 
