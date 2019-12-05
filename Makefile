@@ -1,4 +1,3 @@
-
 CC=g++
 CFLAGS=-std=c++11 -g -Wall
 
@@ -43,3 +42,6 @@ ${BUILD_DIR}/main.o: ${INCLUDE_DIR}/*.h ./main.cpp
 
 clean:
 	rm -f ${BUILD_DIR}/*.o
+
+test:
+	

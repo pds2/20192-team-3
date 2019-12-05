@@ -1,5 +1,4 @@
-#include "doctest.h"
-
+#include "./third_party/doctest.h"
 #include "../include/baralho.h"
 #include "../include/carta.h"
 #include "../include/excessao.h"
@@ -13,14 +12,14 @@
 #include <iostream>
 #include <math.h>
 
-Baraho
-Carta
-Excessao
-Game
-Logica
-Mao
-Mesa
-UsualCard
+Baralho;
+Carta;
+Excessao;
+Game;
+Logica;
+Mao;
+Mesa;
+UsualCard;
 
 TEST_CASE ("01 - Teste construtor baralho"){
     CHECK_NOTHROW(Baralho baralho1(""));

@@ -149,23 +149,50 @@ void Logica::controleRodada(Baralho* baralho, Mao maoJogador, Mao ia1Mao, Mao ia
 
             //vez do jogador
             if(j==0){
-                
+                int tentativas = 0;
                 std::cout << "Qual carta voce quer jogar?" << std::endl;
                 maoJogador.mostrar_mao();
 
+                while(true){
                 try{
                     std::cin >> this->cartaEscolhida;
 
+                    if(i==0){
                     if(this->cartaEscolhida != 1 &&
                         this->cartaEscolhida != 2 &&
                         this->cartaEscolhida != 3 ){
+                        tentativas++;
                         throw Excessao();
+                    } else {
+                        break;
+                    }
+                    }
+                    if(i==1){
+                    if(this->cartaEscolhida != 1 &&
+                        this->cartaEscolhida != 2){
+                        tentativas++;
+                        throw Excessao();
+                    } else {
+                        break;
+                    }
+                    }
+                    if(i==2){
+                    if(this->cartaEscolhida != 1){
+                        tentativas++;
+                        throw Excessao();
+                    } else {
+                        break;
+                    }
                     }
                 }   
                 catch(Excessao &e){
                     std::cerr << e.what() << std::endl;
+                    if (tentativas == 3){
+                        std::cout << "Número de tentativas máxima atingido! Game Over!" << std::endl;
+                        exit(1);
+                    }
                 }
-                
+                }
                 selecionadaCarta = maoJogador.descartar(this->cartaEscolhida);
                 std::cout << "Voce jogou a carta: ";
                 selecionadaCarta->print_carta();

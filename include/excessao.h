@@ -2,6 +2,7 @@
 #define _EXCESSAO_H
 
 #include <stdexcept>
+#include <exception>
 
 class Excessao : public std::exception {
     
