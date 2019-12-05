@@ -44,4 +44,5 @@ clean:
 	rm -f ${BUILD_DIR}/*.o
 
 test:
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR} tester.cpp tests.cpp -o tester -lpthread --coverage 
 	
