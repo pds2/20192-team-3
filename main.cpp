@@ -50,6 +50,7 @@ int main(){
         //testa condicao de fim da partida (acabou a melhor de três quedas)
         //ATENCAO: essa deve ser a ultima linha dentro do game looping....
         game_loop = game.check_end();
+        
     }
 
     game.print_vencedor();

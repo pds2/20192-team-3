@@ -232,26 +232,34 @@ void Logica::controleRodada(Baralho* baralho, Mao maoJogador, Mao ia1Mao, Mao ia
 
                 checkOponenteVenc(selecionadaCarta);
                 mesa.por_na_mesa(selecionadaCarta);
+                
             }
         }
 
         aux_timeVenc = testeRodada(i);
 
         if(aux_timeVenc != 999){
+
+           
             limparMao();
+            
             std::cout << std::endl;
             break;
         }
     }
-    
+        
     /*/descartar as cartas restantes
     maoJogador.descartar_mao(&mesa);
     ia1Mao.descartar_mao(&mesa);
     ia2Mao.descartar_mao(&mesa);
     ia3Mao.descartar_mao(&mesa);
 */
-    mesa.recolocar_cartas(baralho); //por elas no final 
+
+    mesa.recolocar_cartas(baralho); //por elas no final
+
 }
+
+
 
 //getters and setters..............................
 int Logica::getTimeVenc(){
