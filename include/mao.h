@@ -13,7 +13,6 @@ class Mao {
         std::vector<Carta*> mao;
     public:
         Mao(Baralho* baralho);
-        ~Mao();
         void mostrar_mao(); //mostrar mao
         Carta* descartar(int carta_pos); //Descartar
 //        void descartar_mao(Mesa* mesa); //Descartar mao na mesa 

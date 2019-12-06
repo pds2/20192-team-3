@@ -1,48 +1,42 @@
-CC=g++
-CFLAGS=-std=c++11 -g -Wall
+CC := g++
+SRCDIR := src
+TSTDIR := tests
+OBJDIR := build
+BINDIR := bin
 
-BUILD_DIR=./build
-SRC_DIR=./src
-INCLUDE_DIR=./include
+MAIN := program/main.cpp
+TESTER := program/tester.cpp
 
-EXEC=./tp
-TARGET=tp
+SRCEXT := cpp
+SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+OBJECTS := $(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
+TSTSOURCES := $(shell find $(TSTDIR) -type f -name *.$(SRCEXT))
 
-$(EXEC): ${BUILD_DIR}/${TARGET}
+CFLAGS := -g -Wall -O3 -std=c++11
+INC := -I include/ -I third_party/
 
-${BUILD_DIR}/${TARGET}: ${BUILD_DIR}/baralho.o ${BUILD_DIR}/carta.o ${BUILD_DIR}/excessao.o ${BUILD_DIR}/game.o ${BUILD_DIR}/logica.o ${BUILD_DIR}/mao.o ${BUILD_DIR}/mesa.o ${BUILD_DIR}/usual_card.o ${BUILD_DIR}/main.o
-	${CC} ${CFLAGS} -o ${BUILD_DIR}/${TARGET} ${BUILD_DIR}/*.o
+$(OBJDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
-${BUILD_DIR}/baralho.o: ${INCLUDE_DIR}/baralho.h ${INCLUDE_DIR}/carta.h ${INCLUDE_DIR}/usual_card.h ${SRC_DIR}/baralho.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR} -c ${SRC_DIR}/baralho.cpp -o ${BUILD_DIR}/baralho.o
+main: $(OBJECTS)
+	@mkdir -p $(BINDIR)
+	$(CC) $(CFLAGS) $(INC) $(MAIN) $^ -o $(BINDIR)/main
 
-${BUILD_DIR}/carta.o: ${INCLUDE_DIR}/carta.h ${SRC_DIR}/carta.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR} -c ${SRC_DIR}/carta.cpp -o ${BUILD_DIR}/carta.o
+tests: $(OBJECTS)
+	@mkdir -p $(BINDIR)
+	$(CC) $(CFLAGS) $(INC) $(TESTER) $(TSTSOURCES) $^ -o $(BINDIR)/tester
+	$(BINDIR)/tester
 
-${BUILD_DIR}/excessao.o: ${INCLUDE_DIR}/excessao.h ${SRC_DIR}/excessao.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR} -c ${SRC_DIR}/excessao.cpp -o ${BUILD_DIR}/excessao.o
+valgrind: main
+	valgrind --leak-check=full --track-origins=yes $(BINDIR)/main
 
-${BUILD_DIR}/game.o: ${INCLUDE_DIR}/game.h ${INCLUDE_DIR}/logica.h ${SRC_DIR}/game.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR} -c ${SRC_DIR}/game.cpp -o ${BUILD_DIR}/game.o
+all: main
 
-${BUILD_DIR}/logica.o: ${INCLUDE_DIR}/logica.h ${SRC_DIR}/logica.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR} -c ${SRC_DIR}/logica.cpp -o ${BUILD_DIR}/logica.o
-
-${BUILD_DIR}/mao.o: ${INCLUDE_DIR}/mao.h ${INCLUDE_DIR}/carta.h ${INCLUDE_DIR}/baralho.h ${INCLUDE_DIR}/mesa.h ${SRC_DIR}/mao.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR} -c ${SRC_DIR}/mao.cpp -o ${BUILD_DIR}/mao.o
-
-${BUILD_DIR}/mesa.o: ${INCLUDE_DIR}/mesa.h ${INCLUDE_DIR}/mao.h ${INCLUDE_DIR}/carta.h ${INCLUDE_DIR}/baralho.h ${SRC_DIR}/mesa.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR} -c ${SRC_DIR}/mesa.cpp -o ${BUILD_DIR}/mesa.o
-
-${BUILD_DIR}/usual_card.o: ${INCLUDE_DIR}/usual_card.h ${INCLUDE_DIR}/carta.h ${SRC_DIR}/usual_card.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR} -c ${SRC_DIR}/usual_card.cpp -o ${BUILD_DIR}/usual_card.o
-
-${BUILD_DIR}/main.o: ${INCLUDE_DIR}/*.h ./main.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR} -c main.cpp -o ${BUILD_DIR}/main.o
+run: main
+	$(BINDIR)/main
 
 clean:
-	rm -f ${BUILD_DIR}/*.o
+	$(RM) -r $(OBJDIR)/* $(BINDIR)/*
 
-test:
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR} tester.cpp tests.cpp -o tester -lpthread --coverage 
-	
+.PHONY: clean coverage

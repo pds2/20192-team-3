@@ -33,13 +33,6 @@ Baralho::Baralho(){
     }
 }
 
-Baralho::~Baralho(){
-    int tamanho = this->baralho.size();
-    for(int i=0; i<tamanho; i++){
-        delete this->baralho[i];
-    }
-}
-
 int aleatorio(int i){
     return std::rand()%i;
 }

@@ -29,6 +29,7 @@ class Game {
 
         void reset_pontuacao();
         bool check_end();
+        bool check_end_partida();
         void print_pontuacao();
         void print_vencedor();
         void aumentarPontos();

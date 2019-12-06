@@ -7,13 +7,6 @@ Mao::Mao(Baralho* baralho){
     }
 }
 
-Mao::~Mao(){
-    int tamanho = this->mao.size();
-    for(int i=0; i<tamanho; i++){
-        delete this->mao[i];
-        }
-}
-
 void mostrar_mao(Carta *carta){
     carta->print_carta();
 }

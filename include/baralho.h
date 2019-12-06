@@ -10,7 +10,6 @@ class Baralho {
         std::vector<Carta*> baralho;
     public:
         Baralho(); //Construtor
-        ~Baralho(); //Destrutor
         void embaralhar(); 
         void mostrar_Baralho(); //cartas do baralho todo
         Carta* pegar_carta(); //pega uma carta do topo 
