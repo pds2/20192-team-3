@@ -28,7 +28,7 @@ void Game::print_pontuacao(){
 
 void Game::print_vencedor(){
 
-    if(pontuacao_final[0] == 2){
+    if(pontuacao_1 == 2){
         std::cout << "Dupla1 venceu!!!" << std::endl;
     }
     else{
